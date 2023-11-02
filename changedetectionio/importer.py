@@ -266,6 +266,8 @@ class import_xlsx_custom(Importer):
                     days, hours = divmod(hours, 24)
                     weeks, days = divmod(days, 7)
                     extras['time_between_check'] = {'weeks': weeks, 'days': days, 'hours': hours, 'minutes': minutes, 'seconds': 0}
+                elif cell_map == 'dynamic':
+                    extras['fetch_backend'] = 'html_webdriver' if strtobool(str(cell_val)) else 'html_requests'
                 else:
                     extras[cell_map] = cell_val.strip()
 
